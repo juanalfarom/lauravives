@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Laura Vives Martinez</title>
+  <style>
+    body {
+    background-color: #d8d8e0; /* Cambia el color aquí */
+    color: rgb(0, 0, 0); /* Cambia el color del texto a blanco */
+    font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    /* Estilos para la barra de secciones lateral */
+    .sidebar {
+      width: 200px;
+      background-color: #d8d8e0;
+      padding: 20px;
+      box-sizing: border-box;
+      height: 100vh;
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  
+    .imagen-centrada {
+      display: flex;
+      justify-content: center; /* Centrar horizontalmente */
+      align-items: center; /* Centrar verticalmente */
+      margin: 0 auto;
+    }
+
+    .seccion-inicio { /* INICIO */
+      display: grid;
+      grid-template-columns: 100%;
+    }
+
+    .imagen-inicio {
+      max-width: 60%;
+      height: auto;
+    } 
+
+    .seccion-imagen { /* BIOGRAFIA */
+      display: grid;
+      grid-template-columns: 55% 45%;
+      grid-gap: 20px; /* Espacio entre las celdas */
+    }
+
+    .imagen-biografia { /* BIOGRAFIA */
+      max-width: 100%;
+      height: auto;
+    }  
+
+    .seccion-galeria { /* GALERIA */
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 3 columnas de igual tamaño */
+      grid-gap: 20px; /* Espacio entre las celdas */
+    }
+
+    .imagen-galeria {  /* GALERIA */
+      max-width: 100%;
+      height: auto;
+      cursor: pointer;
+    }
+
+    .imagen-ampliada {  /* GALERIA */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .imagen-ampliada img {  /* GALERIA */
+      max-width: 80%;
+      max-height: 80%;
+    }
+
+    .seccion-formulario {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .seccion-formulario form {
+      display: grid;
+      grid-gap: 15px;
+    }
+
+    .seccion-formulario .espaciado-grande {
+      margin-top: 40px; /* Espacio mayor entre filas para este elemento */
+    }
+
+    .seccion-formulario label {
+      font-weight: bold;
+    }
+
+    .seccion-formulario input,
+    .seccion-formulario textarea {
+      width: 80%;
+      padding: 8px;
+    }
+
+    .seccion-formulario textarea {
+      height: 150px; /* Altura mayor para el campo de mensaje */
+    }
+
+    .seccion-formulario button {
+      width: 40%;
+      padding: 10px 20px;
+      background-color: #000000;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .videos-container {
+      display: grid;
+      grid-template-columns: 100%;
+    }
+
+    .video-estilo {
+      margin-top: 5%;
+      max-width: 80%;
+      height: auto;
+    } 
+
+    .imagen {
+      margin-right: 20px;
+      margin-bottom: 10px; /* Agregar un espacio vertical */
+    }
+
+    .sidebar a {
+      display: block;
+      margin-bottom: 30px;
+      color: rgb(0, 0, 0); /* Cambia el color del texto a blanco */
+      text-decoration: none; /* Elimina el subrayado */
+      
+    }
+
+    .sidebar ul{
+      padding-left: 0;
+      list-style: none; /* Quitar los puntos de la lista */
+      margin-bottom: 15px; /* Aumentar la separación vertical */
+    }
+
+    /* Estilos para el contenido principal */
+    .content {
+      margin-left: 220px;
+      padding: 20px;
+    }
+
+    /* Estilos para ocultar secciones */
+    .hidden {
+      display: none;
+    }
+
+    .tituloPagina {
+      font-size: 44px; /* Tamaño de texto para el título */
+    }
+
+    /* Estilos para los botones de cambio de idioma */
+    .language-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    .language-buttons button {
+      padding: 5px 10px;
+    }
+
+    .social-media { /* REDES SOCIALES */
+      display: flex;
+      flex-direction: row;
+      /* Ajusta los estilos de la barra lateral según tus preferencias */
+    }
+
+    .boton-media { /* REDES SOCIALES */
+      display: flex;
+      align-items: center;
+      margin-right: 15px; /* Espacio entre los botones */
+      /* Ajusta los estilos de los botones según tus preferencias */
+    }
+
+    .boton-media img { /* REDES SOCIALES */
+      width: 30px; /* Ajusta el tamaño de los iconos */
+      height: 30px;
+    }
+
+  </style>
+  <script>
+    // JavaScript para abrir la sección por defecto al cargar la página
+    window.addEventListener('DOMContentLoaded', function() {
+      var defaultSection = document.getElementById('INICIO'); // ID de la sección por defecto
+      defaultSection.classList.remove('hidden');
+    });
+  </script>
+  <script>
+    // Función para mostrar la sección seleccionada y ocultar las demás
+    function mostrarSeccion(seccionId) {
+      var secciones = document.getElementsByClassName('seccion');
+      for (var i = 0; i < secciones.length; i++) {
+        if (secciones[i].id === seccionId) {
+          secciones[i].classList.remove('hidden');
+        } else {
+          secciones[i].classList.add('hidden');
+        }
+      }
+    }
+
+    function mostrarImagenAmpliada(imagenSrc) {
+      const imagenAmpliada = document.createElement('div');
+      imagenAmpliada.classList.add('imagen-ampliada');
+
+      const imagen = document.createElement('img');
+      imagen.src = imagenSrc;
+
+      imagenAmpliada.appendChild(imagen);
+      document.body.appendChild(imagenAmpliada);
+
+      imagenAmpliada.addEventListener('click', () => {
+        document.body.removeChild(imagenAmpliada);
+      });
+    }
+
+    /*function cambiarIdiomaES() {
+      // Cambiar textos a español
+      document.getElementById('INICIO').textContent = 'INICIO';
+      document.getElementById('BIOGRAFÍA').textContent = 'BIOGRAFÍA';
+      document.getElementById('VIDEOBOOK').textContent = 'VIDEOBOOK';
+      document.getElementById('GALERÍA').textContent = 'GALERÍA';
+      document.getElementById('CV').textContent = 'CV';
+      document.getElementById('CONTACTO').textContent = 'CONTACTO';
+
+      var seccionesLateral = document.querySelectorAll('.sidebar ul li a');
+      seccionesLateral[0].textContent = 'BIOGRAFÍA';
+      seccionesLateral[1].textContent = 'VIDEOBOOK';
+      seccionesLateral[2].textContent = 'GALERÍA';
+      seccionesLateral[3].textContent = 'CV';
+      seccionesLateral[4].textContent = 'CONTACTO';
+    }
+
+    // Función para cambiar el idioma a inglés
+    function cambiarIdiomaEN() {
+      // Cambiar textos a inglés
+      document.getElementById('INICIO').textContent = 'HOME';
+      document.getElementById('BIOGRAFÍA').textContent = 'BIO';
+      document.getElementById('VIDEOBOOK').textContent = 'VIDEOBOOK';
+      document.getElementById('GALERÍA').textContent = 'GALERY';
+      document.getElementById('CV').textContent = 'CV';
+      document.getElementById('CONTACTO').textContent = 'CONTACT';
+
+      var seccionesLateral = document.querySelectorAll('.sidebar ul li a');
+      seccionesLateral[0].textContent = 'BIO';
+      seccionesLateral[1].textContent = 'VIDEOBOOK';
+      seccionesLateral[2].textContent = 'GALERY';
+      seccionesLateral[3].textContent = 'CV';
+      seccionesLateral[4].textContent = 'CONTACT';
+    }*/
+  </script>
+</head>
+<body>
+  <div class="sidebar">
+    <h2><a href="javascript:void(0)" onclick="mostrarSeccion('INICIO')" class="tituloPagina">LAURA VIVES</a></h2>
+    <ul>
+      <li><a href="javascript:void(0)" onclick="mostrarSeccion('BIOGRAFÍA')">BIOGRAFÍA</a></li>
+      <li><a href="javascript:void(0)" onclick="mostrarSeccion('VIDEOBOOK')">VIDEOBOOK</a></li>
+      <li><a href="javascript:void(0)" onclick="mostrarSeccion('GALERÍA')">GALERÍA</a></li>
+      <li><a href="javascript:void(0)" onclick="mostrarSeccion('CV')">CV</a></li>
+      <li><a href="javascript:void(0)" onclick="mostrarSeccion('CONTACTO')">CONTACTO</a></li>
+    </ul>
+    <div class="language-buttons">
+      <button onclick="cambiarIdiomaES()">ES</button>
+      <button onclick="cambiarIdiomaEN()">EN</button>
+    </div>
+    <div class="social-media">
+      <a href="https://www.instagram.com/perfil-de-laura" class="boton-media" target="_blank"><img src="imagenes/inIcon.png" alt="Instagram"></a>
+      <a href="https://www.facebook.com/perfil-de-laura" class="boton-media" target="_blank"><img src="imagenes/fcIcon.png" alt="Facebook"></a>
+      <a href="https://www.twitter.com/perfil-de-laura" class="boton-media" target="_blank"><img src="imagenes/twIcon.png" alt="Twitter"></a>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <section id="INICIO" class="seccion hidden">
+      <div class="seccion-inicio">
+         <img src="imagenes/image6.png" class="imagen-inicio">
+      </div>
+    </section>
+
+    <section id="BIOGRAFÍA" class="seccion hidden">
+      <div class="seccion-imagen">
+        <img src="imagenes/image0.jpeg" class="imagen-biografia">
+        <div>
+          <h2>BIOGRAFÍA</h2>
+          <p>Texto de biografía de Laura Vives Martínez</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="VIDEOBOOK" class="seccion hidden">
+      <div class="videos-container">
+        <div class="imagen-centrada">
+          <video controls class="video-estilo">
+            <source src="videos/Sing.mp4"type="video/mp4">
+            Tu navegador no admite el elemento de video.
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <section id="GALERÍA" class="seccion hidden">
+      <div class="seccion-galeria">
+        <img src="imagenes/image0.jpeg" alt="Foto 1" class="imagen-galeria" onclick="mostrarImagenAmpliada('imagenes/image0.jpeg')">
+        <img src="imagenes/image1.jpeg" alt="Foto 2" class="imagen-galeria" onclick="mostrarImagenAmpliada('imagenes/image1.jpeg')">
+        <img src="imagenes/image2.jpeg" alt="Foto 3" class="imagen-galeria" onclick="mostrarImagenAmpliada('imagenes/image2.jpeg')">
+        <img src="imagenes/image3.jpeg" alt="Foto 4" class="imagen-galeria" onclick="mostrarImagenAmpliada('imagenes/image3.jpeg')">
+        <img src="imagenes/image4.jpeg" alt="Foto 5" class="imagen-galeria" onclick="mostrarImagenAmpliada('imagenes/image4.jpeg')">
+        <img src="imagenes/image5.jpeg" alt="Foto 6" class="imagen-galeria" onclick="mostrarImagenAmpliada('imagenes/image5.jpeg')">
+        <img src="imagenes/image6.jpeg" alt="Foto 7" class="imagen-galeria" onclick="mostrarImagenAmpliada('imagenes/image6.jpeg')">
+        <img src="imagenes/image7.jpeg" alt="Foto 8" class="imagen-galeria" onclick="mostrarImagenAmpliada('imagenes/image7.jpeg')">
+        <img src="imagenes/image8.jpeg" alt="Foto 9" class="imagen-galeria" onclick="mostrarImagenAmpliada('imagenes/image8.jpeg')">
+      </div>
+    </section>
+
+    <section id="CV" class="seccion hidden">
+      <div class="seccion-imagen">
+        <img src="imagenes/image11.jpeg" class="imagen-biografia">
+        <div>
+          <h2>CV</h2>
+          <p>Texto de CV de Laura Vives Martínez</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="CONTACTO" class="seccion hidden">
+      <div class="seccion-imagen">
+        <img src="imagenes/image10.jpeg" class="imagen-biografia">
+        <div class="seccion-formulario">
+          <form action="enviar_correo.php" method="post">
+            <label for="nombre">Nombre Completo</label>
+            <input type="text" id="nombre" name="nombre" required>
+    
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="mensaje" class="espaciado-grande" >Mensaje</label>
+            <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+            
+            <button type="submit">Enviar</button>
+          </form>
+        </div>
+      </div>
+</body>
+</html>
