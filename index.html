@@ -15,11 +15,15 @@
       background-color: #d8d8e0;
       padding: 20px;
       box-sizing: border-box;
-      height: 100vh;
+      height: 95vh;
       position: fixed;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+    }
+
+    .no-scroll{
+      position: fixed;
     }
   
     .imagen-centrada {
@@ -32,21 +36,32 @@
     .seccion-inicio { /* INICIO */
       display: grid;
       grid-template-columns: 100%;
+      position: fixed; /* Bloquear deslizamiento vertical */
+      top: 0;
+      right: 0;
+      width: 85%;
+      height: 100vh;
     }
 
     .imagen-inicio {
-      max-width: 60%;
+      max-width: 50%;
       height: auto;
+      margin-left: 30%;
     } 
 
     .seccion-imagen { /* BIOGRAFIA */
       display: grid;
       grid-template-columns: 55% 45%;
-      grid-gap: 20px; /* Espacio entre las celdas */
+      grid-gap: 10px; /* Espacio entre las celdas */
+      position: fixed; /* Bloquear deslizamiento vertical */
+      top: 5;
+      right: 0;
+      width: 80%;
+      height: 100vh;
     }
 
     .imagen-biografia { /* BIOGRAFIA */
-      max-width: 100%;
+      max-width: 90%;
       height: auto;
     }  
 
@@ -280,18 +295,18 @@
       <button onclick="cambiarIdiomaEN()">EN</button>
     </div>
     <div class="social-media">
-      <a href="https://www.instagram.com/perfil-de-laura" class="boton-media" target="_blank"><img src="imagenes/inIcon.png" alt="Instagram"></a>
-      <a href="https://www.facebook.com/perfil-de-laura" class="boton-media" target="_blank"><img src="imagenes/fcIcon.png" alt="Facebook"></a>
-      <a href="https://www.twitter.com/perfil-de-laura" class="boton-media" target="_blank"><img src="imagenes/twIcon.png" alt="Twitter"></a>
+      <a href="https://instagram.com/lauravives_?igshid=NTc4MTIwNjQ2YQ==" class="boton-media" target="_blank"><img src="imagenes/inIcon.png" alt="Instagram"></a>
+      <a href="https://www.facebook.com/laura.vivesmartinez" class="boton-media" target="_blank"><img src="imagenes/fcIcon.png" alt="Facebook"></a>
+      <a href="https://twitter.com/lauravives_?s=11&t=Iu5fiaqE6aD0_bGFSPeOdA" class="boton-media" target="_blank"><img src="imagenes/twIcon.png" alt="Twitter"></a>
     </div>
   </div>
 
   <div class="content">
 
     <section id="INICIO" class="seccion hidden">
-      <div class="seccion-inicio">
-         <img src="imagenes/image6.png" class="imagen-inicio">
-      </div>
+        <div class="seccion-inicio">
+          <img src="imagenes/image6.png" class="imagen-inicio">
+        </div>
     </section>
 
     <section id="BIOGRAFÍA" class="seccion hidden">
