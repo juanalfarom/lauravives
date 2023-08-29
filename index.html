@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Laura Vives</title>
+  <title>Laura Vives Martinez</title>
   <link rel="icon" href="imagenes/star.png" type="image/png">
   <style>
     body {
@@ -182,13 +182,8 @@
     /* Estilos para los botones de cambio de idioma */
     .language-buttons {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 10px;
-    }
-
-    .language-buttons button {
-      padding: 5px 10px;
+      flex-direction: row;
+      
     }
 
     .social-media { /* REDES SOCIALES */
@@ -245,14 +240,14 @@
       });
     }
 
-    /*function cambiarIdiomaES() {
+    function cambiarIdiomaES() {
       // Cambiar textos a español
-      document.getElementById('INICIO').textContent = 'INICIO';
+      /*document.getElementById('INICIO').textContent = 'INICIO';
       document.getElementById('BIOGRAFÍA').textContent = 'BIOGRAFÍA';
       document.getElementById('VIDEOBOOK').textContent = 'VIDEOBOOK';
       document.getElementById('GALERÍA').textContent = 'GALERÍA';
       document.getElementById('CV').textContent = 'CV';
-      document.getElementById('CONTACTO').textContent = 'CONTACTO';
+      document.getElementById('CONTACTO').textContent = 'CONTACTO';*/
 
       var seccionesLateral = document.querySelectorAll('.sidebar ul li a');
       seccionesLateral[0].textContent = 'BIOGRAFÍA';
@@ -265,20 +260,37 @@
     // Función para cambiar el idioma a inglés
     function cambiarIdiomaEN() {
       // Cambiar textos a inglés
-      document.getElementById('INICIO').textContent = 'HOME';
+     /* document.getElementById('INICIO').textContent = 'HOME';
       document.getElementById('BIOGRAFÍA').textContent = 'BIO';
       document.getElementById('VIDEOBOOK').textContent = 'VIDEOBOOK';
       document.getElementById('GALERÍA').textContent = 'GALERY';
       document.getElementById('CV').textContent = 'CV';
-      document.getElementById('CONTACTO').textContent = 'CONTACT';
+      document.getElementById('CONTACTO').textContent = 'CONTACT';*/
 
       var seccionesLateral = document.querySelectorAll('.sidebar ul li a');
       seccionesLateral[0].textContent = 'BIO';
       seccionesLateral[1].textContent = 'VIDEOBOOK';
-      seccionesLateral[2].textContent = 'GALERY';
+      seccionesLateral[2].textContent = 'GALLERY';
       seccionesLateral[3].textContent = 'CV';
       seccionesLateral[4].textContent = 'CONTACT';
-    }*/
+    }
+
+    function cambiarIdiomaCAT() {
+      // Cambiar textos a inglés
+     /* document.getElementById('INICIO').textContent = 'HOME';
+      document.getElementById('BIOGRAFÍA').textContent = 'BIO';
+      document.getElementById('VIDEOBOOK').textContent = 'VIDEOBOOK';
+      document.getElementById('GALERÍA').textContent = 'GALERY';
+      document.getElementById('CV').textContent = 'CV';
+      document.getElementById('CONTACTO').textContent = 'CONTACT';*/
+
+      var seccionesLateral = document.querySelectorAll('.sidebar ul li a');
+      seccionesLateral[0].textContent = 'BIOGRAFIA';
+      seccionesLateral[1].textContent = 'VIDEOBOOK';
+      seccionesLateral[2].textContent = 'GALERIA';
+      seccionesLateral[3].textContent = 'CV';
+      seccionesLateral[4].textContent = 'CONTACTE';
+    }
   </script>
 </head>
 <body>
@@ -292,8 +304,11 @@
       <li><a href="javascript:void(0)" onclick="mostrarSeccion('CONTACTO')">CONTACTO</a></li>
     </ul>
     <div class="language-buttons">
-      <button onclick="cambiarIdiomaES()">ES</button>
-      <button onclick="cambiarIdiomaEN()">EN</button>
+      <a href="#" class="boton-media" onclick="cambiarIdiomaES()">ES</a>
+      <a class="boton-media">|</a>
+      <a href="#" class="boton-media" onclick="cambiarIdiomaEN()">EN</a>
+      <a class="boton-media">|</a>
+      <a href="#" class="boton-media" onclick="cambiarIdiomaCAT()">CAT</a>
     </div>
     <div class="social-media">
       <a href="https://instagram.com/lauravives_?igshid=NTc4MTIwNjQ2YQ==" class="boton-media" target="_blank"><img src="imagenes/inIcon.png" alt="Instagram"></a>
