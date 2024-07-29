@@ -279,6 +279,84 @@
       height: 30px;
     }
 
+
+    /* Media queries para dispositivos móviles */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .sidebar a {
+    margin-bottom: 10px;
+  }
+
+  .sidebar ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .content {
+    margin-left: 0;
+    padding: 10px;
+  }
+
+  .seccion-inicio,
+  .seccion-imagen,
+  .seccion-cv {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin: 0;
+  }
+
+  .imagen-inicio,
+  .imagen-biografia,
+  .imagen-cv {
+    width: 100%;
+    height: auto;
+    margin: 0;
+  }
+
+  .biografia-texto,
+  .cv-texto,
+  .cv-texto-titulo,
+  .cv-texto-fin {
+    margin-right: 0;
+    padding: 0 10px;
+  }
+
+  .videos-container {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: auto;
+    padding: 10px;
+  }
+
+  .video-wrapper iframe {
+    width: 100%;
+    height: auto;
+  }
+
+  .seccion-galeria {
+    grid-template-columns: repeat(2, 1fr); /* Ajustar a 2 columnas en móviles */
+    grid-gap: 10px;
+  }
+
+  .imagen-galeria {
+    width: 100%;
+    height: auto;
+  }
+}
+
+
   </style>
   <script>
     // JavaScript para abrir la sección por defecto al cargar la página
